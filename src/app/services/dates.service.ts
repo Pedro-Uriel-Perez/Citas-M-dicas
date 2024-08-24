@@ -11,7 +11,7 @@ import { Citas } from '../models/Citas';
 })
 export class DatesService {
   // API_URI = 'http://localhost:3000  para frontend
-  API_URI = 'https://citasmedicas-p785bkg4v-pedro-uriel-perezs-projects.vercel.app'; // Cambiado para usar /api
+  API_URI = 'https://citasmedicas-ten.vercel.app'; // Cambiado para usar /api
 
   constructor(private http: HttpClient) { }
 
@@ -59,9 +59,8 @@ export class DatesService {
 
 
 
-  // hasta aqui con las /api al principioooo
   login(credentials: { correo: string; contrase: string }): Observable<any> {
-    return this.http.post(`${this.API_URI}/login`, credentials).pipe(
+    return this.http.post(`${this.API_URI}/api/login`, credentials).pipe(
       catchError(this.handleError)
     );
   }
@@ -72,6 +71,10 @@ export class DatesService {
       catchError(this.handleError)
     );
   }
+
+
+
+    // hasta aqui con las /api al principioooo
 
   saveCita(cita: Citas): Observable<any> {
     return this.http.post(`${this.API_URI}/citas`, cita);
