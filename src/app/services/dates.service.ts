@@ -11,7 +11,7 @@ import { Citas } from '../models/Citas';
 })
 export class DatesService {
   // API_URI = 'http://localhost:3000  para frontend
-  API_URI = 'http://192.168.200.226:3000/api'; // Cambiado para usar /api
+  API_URI = 'https://citasmedicas-p785bkg4v-pedro-uriel-perezs-projects.vercel.app/api'; // Cambiado para usar /api
 
   constructor(private http: HttpClient) { }
 
