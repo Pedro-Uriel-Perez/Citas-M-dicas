@@ -11,32 +11,32 @@ import { Citas } from '../models/Citas';
 })
 export class DatesService {
   // API_URI = 'http://localhost:3000  para frontend
-  API_URI = 'https://citasmedicas-ten.vercel.app'; // Cambiado para usar /api
+  API_URI = 'https://citasmedicas-ten.vercel.app/api'; // Cambiado para usar /api
 
   constructor(private http: HttpClient) { }
 
   // Método para guardar un hospitall
   guardarHospital(hospital: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(`${this.API_URI}/api/registrar-hospital`, hospital, { headers })
+    return this.http.post(`${this.API_URI}/registrar-hospital`, hospital, { headers })
       .pipe(
         catchError(this.handleError)
       );
   }
 
   procesarPago(tarjeta: any): Observable<any> {
-    return this.http.post<any>(`${this.API_URI}/api/registrar-pagos`, tarjeta);
+    return this.http.post<any>(`${this.API_URI}/registrar-pagos`, tarjeta);
   }
 
   getDates(): Observable<Date[]> {
-    return this.http.get<Date[]>(`${this.API_URI}/api/dates`).pipe(
+    return this.http.get<Date[]>(`${this.API_URI}/dates`).pipe(
       tap(dates => console.log('Fechas obtenidas:', dates)),
       catchError(this.handleError)
     );
   }
 
   getDate(id: string): Observable<Date> {
-    return this.http.get<Date>(`${this.API_URI}/api/dates/${id}`).pipe(
+    return this.http.get<Date>(`${this.API_URI}/dates/${id}`).pipe(
       tap(date => console.log('Fecha obtenida:', date)),
       catchError(this.handleError)
     );
@@ -44,23 +44,19 @@ export class DatesService {
 
   saveDate(date: Date): Observable<any> {
     console.log('Enviando solicitud de registro:', date);
-    return this.http.post(`${this.API_URI}/api/register`, date).pipe(
+    return this.http.post(`${this.API_URI}/register`, date).pipe(
       catchError(this.handleError)
     );
   }
 
   register(user: any): Observable<any> {
-    return this.http.post(`${this.API_URI}/api/register`, user).pipe(
+    return this.http.post(`${this.API_URI}/register`, user).pipe(
       catchError(this.handleError)
     );
   }
 
-
-
-
-
   login(credentials: { correo: string; contrase: string }): Observable<any> {
-    return this.http.post(`${this.API_URI}/api/login`, credentials).pipe(
+    return this.http.post(`${this.API_URI}/login`, credentials).pipe(
       catchError(this.handleError)
     );
   }
@@ -71,10 +67,6 @@ export class DatesService {
       catchError(this.handleError)
     );
   }
-
-
-
-    // hasta aqui con las /api al principioooo
 
   saveCita(cita: Citas): Observable<any> {
     return this.http.post(`${this.API_URI}/citas`, cita);
