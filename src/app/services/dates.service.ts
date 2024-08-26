@@ -11,7 +11,7 @@ import { Citas } from '../models/Citas';
 })
 export class DatesService {
   // API_URI = 'http://localhost:3000  para frontend
-  API_URI = 'https://apoointmentsmedical.vercel.app/api'; // Cambiado para usar /api
+  API_URI = 'https://citasmedicas-ten.vercel.app/api'; // Cambiado para usar backend
 
   constructor(private http: HttpClient) { }
 
